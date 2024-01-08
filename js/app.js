@@ -2,6 +2,10 @@ var playpause = document.getElementById("play");
 var slider_volume = document.getElementById("volume");
 var songtimer = document.getElementById("song_time");
 var mute_unmute_img=document.getElementById("volume_img")
+var song_list=document.querySelector(".songList").getElementsByTagName(" ul")
+var song_ul=document.getElementById("myList")
+
+
 
 songs = [
   {
@@ -75,6 +79,50 @@ var update_seeekhbar;
 var nxt_song;
 
 var audio = document.createElement("audio");
+
+
+// load playlist
+Array.from(songs).forEach(element =>{
+  song_ul.innerHTML+=`<li><img class="invert" width="34" src="img/music.svg" alt="">
+  <div class="info">
+      <div> ${element.name}</div>
+      <div>${element.artist}</div>
+      <p style="display: none;">${element.path}</p>
+      
+  </div>
+  <div class="playnow">
+      <span>Play Now</span>
+      <img class="invert" src="img/play.svg" alt="">
+  </div> </li>`;
+
+})
+
+var get_path;
+var audio_path;
+var tab;
+
+
+
+
+  // Get all li elements
+  var listItems = document.querySelectorAll('#myList li');
+
+  // Add click event listener to each li element
+  listItems.forEach(function (li, index) {
+      li.addEventListener('click', function () {
+          // Display the index when the li is clicked
+          track_index=index;
+          playtrack(track_index);
+          play();
+      });
+  });
+
+
+
+
+
+
+
 
 // main function
 function playtrack(track_index) {
