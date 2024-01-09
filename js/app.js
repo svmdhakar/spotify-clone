@@ -206,6 +206,8 @@ function resetvalue() {
   curr_time = "00:00";
   total_duration = "00:00";
   songtimer.innerHTML = "00:00/00:00";
+  document.querySelector(".circle").style.left = "0%";
+
 }
 
 
